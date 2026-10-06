@@ -1,6 +1,6 @@
 # Adventuregame
 
-Un'avventura punta e clicca in pixel art, ispirata alle avventure grafiche degli anni Novanta. La scena è un porto di notte: il protagonista cammina sul molo, trova una **Vite fuori posto** e una macchina del tempo luminescente.
+Un'avventura punta e clicca in pixel art, ispirata alle avventure grafiche degli anni Novanta. La scena è un porto di notte: cielo blu intenso, isola al chiaro di luna, molo di pietra e una macchina del tempo con camera cilindrica luminescente. Il protagonista cammina sul molo e trova una **Vite fuori posto**.
 
 Raccogli la vite e usala con la macchina: un raggio luminoso colpisce il protagonista e conclude la partita con la scritta **«Sei morto»**.
 
@@ -59,5 +59,6 @@ Puoi verificare la build anche in locale con `npm run build`. Una volta collegat
 - `src/game.js`: scena del porto e interazioni del gioco.
 - `src/renderer.js` e `src/background.js`: disegno e animazione in pixel art.
 - `src/app.js` e `src/style.css`: interfaccia nel browser.
-- La grafica è disegnata direttamente su canvas: non richiede asset o servizi esterni.
+- `assets/harbor-night.png`: scenario in pixel art; il canvas aggiunge riflessi, luminescenza, vite e personaggio animato. Tutti i file sono inclusi nel sito, senza servizi esterni.
+- `assets/VT323-Regular.ttf`: font pixel VT323 di Peter Hull, distribuito sotto SIL Open Font License 1.1; licenza inclusa in `assets/VT323-OFL.txt`.
 - `scripts/dev-server.mjs`: server locale senza dipendenze esterne.

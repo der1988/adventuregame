@@ -3,35 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10101e">
+  <meta name="theme-color" content="#000000">
   <title>Una vite fuori posto · Avventura punta e clicca</title>
   <link rel="stylesheet" href="/src/style.css">
   <script type="module" src="/src/app.js"></script>
 </head>
 <body>
   <header class="masthead">
-    <a class="brand" href="/" aria-label="Una vite fuori posto, pagina iniziale"><span class="brand-mark" aria-hidden="true">✦</span><div><h1>UNA VITE FUORI POSTO</h1><p>UN’AVVENTURA PUNTA E CLICCA</p></div></a>
-    <div class="top-actions"><span class="edition">CAPITOLO 00 <span>·</span> IL PORTO</span><button id="help-button" class="quiet-button" aria-label="Come si gioca">?</button><button id="menu-button" class="quiet-button">Menu <span aria-hidden="true">☰</span></button></div>
+    <a class="brand" href="/" aria-label="Una vite fuori posto, pagina iniziale"><h1>UNA VITE FUORI POSTO</h1></a>
+    <div class="top-actions"><button id="help-button" class="quiet-button" aria-label="Come si gioca">?</button><button id="menu-button" class="quiet-button">Menu</button></div>
   </header>
   <main class="game-shell">
-    <div class="scene-bar"><span><span class="status-dot"></span> PORTO · NOTTE</span><button id="show-hotspots" aria-pressed="false">✧ Mostra oggetti <kbd>Spazio</kbd></button></div>
     <section class="viewport" aria-label="Porto di notte, scena interattiva">
       <div id="scene" class="scene" tabindex="0" aria-label="Molo. Clicca il pavimento o usa le frecce per camminare.">
         <canvas id="game-canvas" width="640" height="360" aria-hidden="true"></canvas>
         <div id="hotspots" class="hotspots"></div>
-        <span class="scene-corner" aria-hidden="true">23:47</span>
       </div>
       <div id="ending" class="ending" hidden role="alert" aria-live="assertive"><div class="ending-card"><span class="ending-symbol" aria-hidden="true">✝</span><h2>Sei morto</h2><p>Forse quella vite era fuori posto per un motivo.</p><button id="replay" class="primary-button">Riprova <span aria-hidden="true">↺</span></button></div></div>
     </section>
     <section class="console" aria-label="Comandi SCUMM e inventario">
-      <div class="action-line"><span id="current-action">Vai a…</span><span class="action-help">Scegli un verbo, poi un oggetto.</span></div>
       <div class="controls-grid">
-        <div class="verb-panel"><div class="panel-heading"><span>AZIONI</span><button id="walk-button" data-verb="walk" aria-pressed="true">↗ Cammina</button></div><div id="verbs" class="verbs" role="group" aria-label="Scegli un verbo"><button data-verb="give">Dai</button><button data-verb="open">Apri</button><button data-verb="close">Chiudi</button><button data-verb="take">Prendi</button><button data-verb="look">Guarda</button><button data-verb="talk">Parla</button><button data-verb="use">Usa</button><button data-verb="push">Spingi</button><button data-verb="pull">Tira</button></div></div>
-        <div class="inventory-panel"><div class="panel-heading"><span>INVENTARIO</span><span id="inventory-count">0 OGGETTI</span></div><div id="inventory" class="inventory"><span class="empty-inventory">Niente in tasca. Per ora.</span></div><button id="clear-item" hidden>Annulla selezione ×</button></div>
+        <div class="verb-panel">
+          <div class="scene-bar"><button id="walk-button" data-verb="walk" aria-pressed="true">Cammina</button><button id="show-hotspots" aria-pressed="false">Mostra oggetti <kbd>Spazio</kbd></button></div>
+          <div id="verbs" class="verbs" role="group" aria-label="Scegli un verbo">
+            <button data-verb="look">Guarda</button><button data-verb="take">Prendi</button><button data-verb="use">Usa</button>
+            <button data-verb="talk">Parla</button><button data-verb="open">Apri</button><button data-verb="close">Chiudi</button>
+            <button data-verb="give">Dai</button><button data-verb="push">Spingi</button><button data-verb="pull">Tira</button>
+          </div>
+        </div>
+        <div class="inventory-panel">
+          <div class="action-line"><span id="current-action">Vai a…</span></div>
+          <span id="inventory-count" class="sr-only">0 OGGETTI</span>
+          <div id="inventory" class="inventory" role="group" aria-label="Inventario"></div>
+          <button id="clear-item" class="sr-only-focusable" hidden>Annulla selezione</button>
+        </div>
       </div>
-      <div class="message-row"><span aria-hidden="true">›</span><p id="message" role="status" aria-live="polite">Un porto silenzioso. Una macchina che non dovrebbe essere qui.</p></div>
+      <div class="message-row"><p id="message" role="status" aria-live="polite">Un porto silenzioso. Una macchina che non dovrebbe essere qui.</p></div>
     </section>
-    <footer class="game-footer"><span><kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd> cammina <span class="separator">/</span> <kbd>Esc</kbd> annulla</span><span>Grafica e animazioni pixel art originali <span class="footer-star">✦</span></span></footer>
+    <footer class="game-footer"><span><kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd> cammina <span class="separator">·</span> <kbd>Esc</kbd> annulla</span></footer>
   </main>
   <dialog id="menu"><div class="modal-heading"><span>PAUSA</span><button id="close-menu" class="quiet-button" aria-label="Chiudi menu">×</button></div><h2>Il tempo può aspettare.</h2><p>La partita viene salvata automaticamente in questo browser dopo ogni azione.</p><div class="menu-actions"><button id="save-button" class="primary-button">Salva partita</button><button id="load-button">Carica partita</button><button id="new-game">Ricomincia</button></div><p id="menu-status" role="status"></p></dialog>
   <dialog id="help"><div class="modal-heading"><span>COME SI GIOCA</span><button id="close-help" class="quiet-button" aria-label="Chiudi istruzioni">×</button></div><h2>La curiosità è un rischio.</h2><ol><li>Clicca il molo per camminare. Le frecce funzionano anche da tastiera.</li><li>Scegli un verbo, poi clicca un oggetto. <strong>Prendi</strong> raccoglie ciò che puoi portare con te.</li><li>Clicca un oggetto nell’inventario, poi il suo bersaglio nella scena per usarlo.</li></ol><p><kbd>Spazio</kbd> mostra gli oggetti. <kbd>Esc</kbd> annulla la selezione. Tab e Invio permettono di usare tutti i comandi.</p><p class="help-note">Una sola scena. Nessun punto, nessun timer. Solo tu, il porto e una vite fuori posto.</p></dialog>

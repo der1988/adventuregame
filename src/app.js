@@ -36,9 +36,7 @@ function renderControls() {
   });
   $('#inventory-count').textContent = `${state.inventory.length} ${state.inventory.length === 1 ? 'OGGETTO' : 'OGGETTI'}`;
   const inventory = $('#inventory'); inventory.replaceChildren();
-  if (!state.inventory.length) {
-    const empty = document.createElement('span'); empty.className = 'empty-inventory'; empty.textContent = 'Niente in tasca. Per ora.'; inventory.append(empty);
-  }
+  inventory.setAttribute('aria-label', state.inventory.length ? 'Oggetti raccolti' : 'Inventario vuoto');
   for (const id of state.inventory) {
     const item = gameDefinition.items[id]; const button = document.createElement('button');
     button.className = `inventory-item${selectedItem === id ? ' selected' : ''}`;
@@ -51,6 +49,12 @@ function renderControls() {
       selectedItem = selectedItem === id ? null : id; selectedVerb = selectedItem ? 'use' : 'walk'; renderControls();
     });
     inventory.append(button);
+  }
+  for (let slot = state.inventory.length; slot < 5; slot++) {
+    const empty = document.createElement('span');
+    empty.className = 'inventory-slot';
+    empty.setAttribute('aria-hidden', 'true');
+    inventory.append(empty);
   }
   $('#clear-item').hidden = !selectedItem; $('#clear-item').disabled = locked; $('#menu-button').disabled = locked;
   $('#ending').hidden = !(state.flags.dead && !locked);

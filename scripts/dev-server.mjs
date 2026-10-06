@@ -30,6 +30,7 @@ const mimeTypes = {
   '.wav': 'audio/wav',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf',
 };
 
 function isPublicPath(pathname) {

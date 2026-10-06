@@ -6,7 +6,7 @@ export const gameDefinition = {
     harbor: {
       name: 'Porto di notte',
       hotspots: [
-        { id: 'time-machine', label: 'Macchina del tempo', x: 460, y: 135, width: 125, height: 157, stand: { x: 435, y: 305 }, actions: {
+        { id: 'time-machine', label: 'Macchina del tempo', x: 460, y: 75, width: 165, height: 220, stand: { x: 435, y: 300 }, actions: {
           look: { message: 'Una macchina del tempo luminescente. C’è un alloggiamento vuoto vicino al nucleo.' },
           take: { message: 'Non credo che entri in tasca.' },
           talk: { message: '«Ehi, tu sai che ore sono?» Nessuna risposta. Solo un ronzio inquietante.' },
@@ -16,20 +16,20 @@ export const gameDefinition = {
           pull: { message: 'Preferisco non tirare quei cavi.' },
           use: [{ item: 'screw', message: 'La vite entra perfettamente. Un attimo… perché punta verso di me?', requires: { flags: { dead: false } }, removeItems: ['screw'], setFlags: { machineTriggered: true, dead: true }, complete: true }],
         } },
-        { id: 'loose-screw', label: 'Vite fuori posto', x: 304, y: 289, width: 31, height: 25, stand: { x: 295, y: 315 }, hiddenWhen: { screwTaken: true }, actions: {
-          look: { message: 'Una vite fuori posto. Luccica sul legno del molo.' },
+        { id: 'loose-screw', label: 'Vite fuori posto', x: 304, y: 289, width: 31, height: 25, stand: { x: 305, y: 310 }, hiddenWhen: { screwTaken: true }, actions: {
+          look: { message: 'Una vite fuori posto. Luccica sulle pietre del molo.' },
           take: { message: 'Raccolgo la vite fuori posto. Potrebbe servirmi.', addItems: ['screw'], setFlags: { screwTaken: true } },
         } },
-        { id: 'boat', label: 'Veliero', x: 22, y: 77, width: 184, height: 135, stand: { x: 170, y: 285 }, actions: {
-          look: { message: 'Un vecchio veliero. L’equipaggio deve essere in qualche taverna.' },
-          talk: { message: '«C’è nessuno?» Il porto resta in silenzio.' },
-          take: { message: 'Mi servirebbe una tasca decisamente più grande.' },
+        { id: 'island', label: 'Isola lontana', x: 40, y: 75, width: 155, height: 85, stand: { x: 170, y: 282 }, actions: {
+          look: { message: 'Un’isola al chiaro di luna. Quelle finestre accese non promettono niente di buono.' },
+          talk: { message: '«Ehi, laggiù!» Soltanto un’eco sopra il mare.' },
+          take: { message: 'Un’isola intera? Non è il momento di esagerare.' },
         } },
-        { id: 'crates', label: 'Casse', x: 24, y: 225, width: 108, height: 63, stand: { x: 142, y: 304 }, actions: {
-          look: { message: 'Casse di merci. Odorano di sale e di viaggi lunghi.' },
-          open: { message: 'Sono inchiodate. E non sono mie.' },
-          take: { message: 'Troppo pesanti. Anche per un’avventura.' },
-          push: { message: 'Niente da fare. Restano lì.' },
+        { id: 'stone-arch', label: 'Arco di pietra', x: 280, y: 98, width: 120, height: 145, stand: { x: 338, y: 277 }, actions: {
+          look: { message: 'Un vecchio arco di pietra. Dall’altra parte si vede soltanto buio.' },
+          open: { message: 'Non c’è una porta. Solo un passaggio che preferisco evitare.' },
+          take: { message: 'Queste pietre stanno bene dove sono.' },
+          push: { message: 'Meglio non provarci: sembra abbastanza in rovina.' },
         } },
       ],
     },
