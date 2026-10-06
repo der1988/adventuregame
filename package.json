@@ -1,0 +1,17 @@
+{
+  "name": "adventuregame",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Avventura punta e clicca in pixel art su un porto notturno",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "start": "node scripts/dev-server.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "node --check scripts/dev-server.mjs && node --check scripts/build.mjs && node --check src/app.js && node --check src/engine.js && node --check src/game.js && node --check src/renderer.js && node --check src/background.js"
+  }
+}
